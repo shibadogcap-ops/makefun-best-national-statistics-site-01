@@ -168,7 +168,7 @@ function population() {
   return `
   ${chartPanel(
     'Age structure',
-    'Japan’s population by broad age group, October 2024 — more than a third of the country is now 65 or older.',
+    'Japan’s population by broad age group, October 2024 — nearly three in ten residents are 65 or older.',
     hbarChart(ageItems, { label: 'Population by age group', max: 80000000 }),
     SRC_POP,
     `<p class="chart-caption">Shares are of the total population; the 75-and-over group sits inside the 65-and-over group.</p>`,

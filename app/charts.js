@@ -50,6 +50,7 @@ function fmtNum(v) {
 // Pick indices for evenly spaced x-axis labels: first, last, and ~3 interior.
 function xLabelIndices(n, max = 5) {
   if (n <= 1) return [0];
+  if (n <= 6) return [...Array(n).keys()]; // short series: label every point
   const set = new Set([0, n - 1]);
   const inner = Math.min(max - 2, n - 2);
   for (let i = 1; i <= inner; i++) set.add(Math.round((i * (n - 1)) / (inner + 1)));
