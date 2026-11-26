@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nippon Data Atlas — Japan in Official Statistics</title>
+  <meta name="description" content="Nippon Data Atlas presents Japan's official statistics — population, economy, society, energy and regions — with sources and years named for every figure.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-head">
+    <div class="head-inner">
+      <div class="brand">
+        <span class="brand-name">Nippon Data Atlas</span>
+        <span class="brand-jp">日本の統計アトラス</span>
+        <span class="tagline">Japan’s numbers, at a glance.</span>
+      </div>
+      <nav class="main-nav" aria-label="Primary">
+        <a class="nav-link" href="#/" data-route="overview">Overview</a>
+        <a class="nav-link" href="#/population" data-route="population">Population</a>
+        <a class="nav-link" href="#/economy" data-route="economy">Economy</a>
+        <a class="nav-link" href="#/society" data-route="society">Society &amp; Energy</a>
+        <a class="nav-link" href="#/regions" data-route="regions">Regions</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app">
+    <p class="loading">Loading the atlas…</p>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-inner">
+      <p class="foot-note">Every figure on this site names its source and reference year. Where a value is an estimate or a projection, the label says so.</p>
+      <p class="foot-sources">
+        <strong>Sources:</strong>
+        Statistics Bureau of Japan · Cabinet Office · Ministry of Finance ·
+        Ministry of Health, Labour and Welfare · Immigration Services Agency ·
+        Japan National Tourism Organization · Agency for Natural Resources and Energy ·
+        Ministry of Education · Geospatial Information Authority of Japan
+      </p>
+      <p class="foot-disclaimer">Nippon Data Atlas is an independent presentation of public statistics. It is not a government website and is not affiliated with any of the agencies listed.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
