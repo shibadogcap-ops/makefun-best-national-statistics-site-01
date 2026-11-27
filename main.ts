@@ -2,7 +2,7 @@
 // stripping, standard library only). It stages this repository for judging:
 //
 //   1. figure out where this script lives and where the finished entry should go;
-//   2. wipe and rebuild that output directory;
+//   2. clear the output directory's contents (the directory itself is kept, because the grader's output directory cannot be removed);
 //   3. copy the site's files (app/) and the screenshots (screenshots/) into it;
 //   4. ask the vendored make.fun library for the dossier JSON and write it out verbatim.
 //
@@ -10,7 +10,7 @@
 // vendor/makefun-frontend.ts produces, so that file must stay untouched and the
 // bytes returned by buildDossier must be written with no extra formatting.
 
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
@@ -22,9 +22,12 @@ const repoRoot = fileURLToPath(new URL('.', import.meta.url));
 // `output/` folder is created next to this file.
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? join(repoRoot, 'output');
 
-// Recreate the output directory from scratch so stale files can never leak into a submission.
-rmSync(outputDir, { recursive: true, force: true });
+// Clear the contents of the output directory so stale files can never leak into a submission;
+// the directory itself is kept because the grader's output directory cannot be removed.
 mkdirSync(outputDir, { recursive: true });
+for (const entry of readdirSync(outputDir)) {
+  rmSync(join(outputDir, entry), { recursive: true, force: true });
+}
 
 // Bring over the frontend (app/) and the judge's screenshots (screenshots/), preserving structure.
 cpSync(join(repoRoot, 'app'), join(outputDir, 'app'), { recursive: true });
